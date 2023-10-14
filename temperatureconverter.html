@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Temperature Converter</title>
+<style>
+
+.cont {
+margin:auto;
+text-align:center;
+padding:20px;
+width:300px;
+height:500px;
+color:blue;
+}
+input[type="number"] {
+  padding: 25px;
+  width: 130px;
+font-family:Times New Roman;
+color:red;
+font-weight:bold;
+}
+
+
+button {
+  padding: 20px 20px;
+  background-color:silver;
+  color: red;
+font-weight:bold;
+font-family:elephant;
+  border: none;
+  cursor: pointer;
+  margin-left: 30px;
+}
+
+h2 {
+  margin-top: 20px;
+
+}
+h1{
+color:red;
+font-family:verdana;
+}
+
+</style>
+</head>
+<body bgcolor="cyan">
+  <h1><center><font color="fuchsia">TEMPERATURE CONVERTER </font></center></h1>
+  <div class="cont">
+    <input type="number" id="inputTemperature" placeholder="Enter temperature">
+    <select id="unitSelector">
+      <option value="celsius">Celsius</option>
+      <option value="fahrenheit">Fahrenheit</option>
+<option value="kelvin">Kelvin</option>
+    </select>
+<br><br>
+    <button onclick="convertTemperature()">Convert</button>
+    <h2 id="result">Result</h2>
+  </div>
+  <script>function convertTemperature() {
+  var inputTemperature = document.getElementById("inputTemperature").value;
+  var unitSelector = document.getElementById("unitSelector");
+  var selectedUnit = unitSelector.options[unitSelector.selectedIndex].value;
+  var resultElement = document.getElementById("result");
+
+  if (selectedUnit === "celsius") {
+    var fahrenheit = (inputTemperature * 9/5) + 32;
+    var kelvin = parseFloat(inputTemperature) + 273.15;
+    resultElement.innerHTML = inputTemperature + " C is equal to " + fahrenheit.toFixed(2) + " F <br>" + kelvin.toFixed(2) + "K";
+  } else if (selectedUnit === "fahrenheit") {
+    var celsius = (inputTemperature - 32) * 5/9;
+    var kelvin = (inputTemperature - 32) * 5/9 + 273.15;
+    resultElement.innerHTML = inputTemperature + " F is equal to " + celsius.toFixed(2) + " C <br>" + kelvin.toFixed(2) + "K";
+  } else if (selectedUnit === "kelvin") {
+    var celsius = parseFloat(inputTemperature) - 273.15;
+    var fahrenheit = (parseFloat(inputTemperature) - 273.15) * 9/5 + 32;
+    resultElement.innerHTML = inputTemperature + "K is equal to " + celsius.toFixed(2) + " C <br> " + fahrenheit.toFixed(2) + " F";
+  }
+}
+
+</script>
+</body>
+</html>
